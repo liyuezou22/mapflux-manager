@@ -16,9 +16,12 @@ mapflux-manager
 
 
 项目技术选型：
+- jdk 1.8
 - spring boot ：2.1.6.RELEASE
 - pgsql：9.6
 - eureka：2.1.6.RELEASE
+- redis
+
 
 ## 项目说明
 本项目是一个地图文件，上传即服务发布的系统，本项目完全使用sping cloud来实现微服务，值得注意的是分布式的事务该如何实现，这个需要后期考量，其次就是地图数据中的图层与字段数据量可能极大，其效率需要考证，必要时可以引入ELK。
