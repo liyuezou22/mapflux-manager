@@ -6,12 +6,14 @@ mapflux-manager
 - mapflux-basic-data：负责基础数据相关操作，即shp、gdb、pg等文件的管理
 - mapflux-vector-data：负责各种矢量数据发布，即根据shp、gdb、pg等基础数据，选择在线切片、缓存切片等方式，选择图层，字段，生成geojson的过程
 - mapflux-map-data：负责地图数据的发布，即根根据矢量数据生成stuylejson的过程
-- mapflux-map-getway：微服务网关
-- mapflux-map-oauth：微服务认证授权服务
-- mapflux-map-user：用户管理服务
-- mapflux-map-model：存放pojo
-- mapflux-map-common：存放公共类，例如工具类等
-- mapflux-map-eureka：注册中心
+- mapflux-getway：微服务网关
+- mapflux-oauth：微服务认证授权服务
+- mapflux-user：用户管理服务
+- mapflux-model：存放pojo
+- mapflux-common：存放公共类，例如工具类等
+- mapflux-eureka：注册中心
+- mapflux-parent：pom项目，提供模块统一管理
+
 
 项目技术选型：
 - spring boot ：2.1.6.RELEASE
