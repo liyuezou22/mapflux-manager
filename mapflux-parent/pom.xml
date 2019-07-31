@@ -17,6 +17,7 @@
     <modules>
         <module>../mapflux-model</module>
         <module>../mapflux-common</module>
+        <module>../mapflux-eureka</module>
     </modules>
 
     <properties>

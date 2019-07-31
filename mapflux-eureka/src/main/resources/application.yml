@@ -1,0 +1,19 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: mapflux-eureka
+  security:
+    user:
+      name: mapflux
+      password: mapfluxs
+#eureka配置
+eureka:
+  client:
+    register-with-eureka: false #是否将自己注册到注册中心，因为目前只做一个eureka，故而选择false
+    fetch-registry: false #是否从注册中心获取注册信息，默认为ture，一个eureka不需要所以为false
+#优雅停服,开启后http://ip:port/shutdown，即可停止服务
+management:
+  endpoint:
+    shutdown:
+      enabled: true
