@@ -13,6 +13,8 @@ mapflux-manager
 - mapflux-common：存放公共类，例如工具类等
 - mapflux-eureka：注册中心
 - mapflux-parent：pom项目，提供模块统一管理
+
+
 项目技术选型：
 - spring boot ：2.1.6.RELEASE
 - pgsql：9.6
