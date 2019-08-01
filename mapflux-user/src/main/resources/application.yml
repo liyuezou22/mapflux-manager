@@ -1,0 +1,10 @@
+server:
+  port: 9200
+
+spring:
+  application:
+    name: mapflux-user
+eureka:
+  client:
+    service-url:
+      defaultZone: http://mapflux:mapflux@127.0.0.1:9100/eureka

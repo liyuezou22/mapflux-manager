@@ -15,6 +15,23 @@
 
 
     <dependencies>
+        <!-- 需要提供异常捕获配置 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.30</version>
+        </dependency>
+        <!-- model -->
+        <dependency>
+            <groupId>com.cq.szyk</groupId>
+            <artifactId>mapflux-model</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 

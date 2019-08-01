@@ -6,7 +6,7 @@ spring:
   security:
     user:
       name: mapflux
-      password: mapfluxs
+      password: mapflux
 #eureka≈‰÷√
 eureka:
   client:
