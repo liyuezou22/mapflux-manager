@@ -26,10 +26,15 @@ public class ResponseResult implements Response {
     //响应数据
     Object data;
 
+    public ResponseResult(ResultCode resultCode, Object data) {
+        this.success = resultCode.success();
+        this.code = resultCode.code();
+        this.message = resultCode.message();
+        this.data = data;
+    }
     public ResponseResult(ResultCode resultCode) {
         this.success = resultCode.success();
         this.code = resultCode.code();
         this.message = resultCode.message();
-        this.data = resultCode.data();
     }
 }

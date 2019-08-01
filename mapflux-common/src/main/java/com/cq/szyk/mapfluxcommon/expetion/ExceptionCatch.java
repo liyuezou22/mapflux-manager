@@ -29,7 +29,7 @@ public class ExceptionCatch {
     @ResponseBody
     public Response exception(Exception e) {
         LOGGER.error(e.getMessage());
-        SystemCode systemCode = new SystemCode(false, 2000, e.getMessage(), null);
-        return new ResponseResult(systemCode);
+        CustomizeCode customizeCode = new CustomizeCode(false, 2000, e.getMessage());
+        return new ResponseResult(customizeCode);
     }
 }

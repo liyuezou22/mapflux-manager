@@ -1,20 +1,21 @@
 package com.cq.szyk.mapfluxcommon.response;
-
-public class SystemCode implements ResultCode {
+/**
+* @author lyz
+* @describe 自定义返回类,自定义返回码，均为3000开头
+* @date 2019/8/1
+*/
+public class CustomizeCode implements ResultCode {
     //操作是否成功
     private boolean success;
     //操作代码
     private int code;
     //提示信息
     private String message;
-    //响应数据
-    private Object data;
 
-    public SystemCode(boolean success, int code, String message, Object data) {
+    public CustomizeCode(boolean success, int code, String message) {
         this.success = success;
         this.code = code;
         this.message = message;
-        this.data = data;
     }
 
     @Override
@@ -32,8 +33,4 @@ public class SystemCode implements ResultCode {
         return message;
     }
 
-    @Override
-    public Object data() {
-        return data;
-    }
 }

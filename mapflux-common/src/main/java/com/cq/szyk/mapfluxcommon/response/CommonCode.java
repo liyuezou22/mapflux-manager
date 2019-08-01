@@ -11,21 +11,28 @@ import lombok.ToString;
 @ToString
 public enum CommonCode implements ResultCode {
     //1000开始的均为true，2000开始的均为false
-    SUCCESS(true, 10000, "操作成功！", null);
+    SUCCESS(true, 10000, "操作成功！"),
+    REGISTER_SUCCESS(true,10001,"用户注册成功！"),
+    DATA_NULL(false, 2001, "数据不能为空！"),
+    USERNAME_NULL(false,2002,"用户名不能为空！"),
+    PASSWORD_NULL(false,2003,"密码不能为空！"),
+    TELEPHONE_NULL(false,2004,"手机号不能为空！"),
+    EMAIL_NULL(false,2005,"邮箱不能为空！"),
+    USERNAME_REPEAT(false,2006,"用户名已存在！"),
+    MKDIR_FAILS(false,2007,"用户文件夹生成失败！"),
+    REGISTER_FAILS(false,2008,"用户注册失败！"),
+    NICKNAME_NULL(false,2009,"昵称不能为空！");
     //操作是否成功
     boolean success;
     //操作代码
     int code;
     //提示信息
     String message;
-    //响应数据
-    Object data;
 
-     CommonCode(boolean success, int code, String message, Object data) {
+    CommonCode(boolean success, int code, String message) {
         this.success = success;
         this.code = code;
         this.message = message;
-        this.data = data;
     }
 
     @Override
@@ -43,10 +50,6 @@ public enum CommonCode implements ResultCode {
         return message;
     }
 
-    @Override
-    public Object data() {
-        return data;
-    }
 
 
 }

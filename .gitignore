@@ -19,7 +19,7 @@ target/
 *.iml
 *.ipr
 *.mvn
-*test
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+logs
+
+#mapflux-common/src/main/resources/
+#mapflux-eureka/src/main/resources/static/
+#mapflux-eureka/src/main/resources/templates/
+#mapflux-user/src/main/java/com/cq/szyk/mapfluxuser/mapper/
+#mapflux-user/src/main/java/com/cq/szyk/mapfluxuser/service/
+#mapflux-user/src/main/resources/static/
+#mapflux-user/src/main/resources/templates/

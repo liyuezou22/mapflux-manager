@@ -4,6 +4,24 @@ server:
 spring:
   application:
     name: mapflux-user
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:postgresql://localhost:5432/mapflux_manager
+    username: postgres
+    password: 111111
+    driver-class-name: org.postgresql.Driver
+
+#mp 类型别名配置
+mybatis-plus:
+  mapper-locations: classpath:com/cq/szyk/mapfluxuser/mapper/*.xml
+  type-aliases-package: com.cq.szyk.mapfluxmodel.users
+
+#日志配置
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    com.cq.szyk.mapfluxuser.mapper: debug
+#eureka client
 eureka:
   client:
     service-url:
