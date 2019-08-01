@@ -21,7 +21,8 @@ public enum CommonCode implements ResultCode {
     USERNAME_REPEAT(false,2006,"用户名已存在！"),
     MKDIR_FAILS(false,2007,"用户文件夹生成失败！"),
     REGISTER_FAILS(false,2008,"用户注册失败！"),
-    NICKNAME_NULL(false,2009,"昵称不能为空！");
+    NICKNAME_NULL(false,2009,"昵称不能为空！"),
+    PARAMETER_NULL(false,2010,"参数不能为空！");
     //操作是否成功
     boolean success;
     //操作代码

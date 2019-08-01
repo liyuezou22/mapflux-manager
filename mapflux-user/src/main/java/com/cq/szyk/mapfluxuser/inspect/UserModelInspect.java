@@ -40,4 +40,10 @@ public class UserModelInspect {
             ExceptionCast.cast(CommonCode.USERNAME_REPEAT);
         }
     }
+
+    public static void getUserListInspect(Integer pageNum, Integer pageSize) {
+        if (pageNum == null || pageSize == null) {
+            ExceptionCast.cast(CommonCode.PARAMETER_NULL);
+        }
+    }
 }

@@ -21,4 +21,11 @@ public class UserController implements UserControllerApi {
     public Response registerUser(Users user) {
         return userService.registerUser(user);
     }
+
+    @Override
+    public Response getUserList(Integer pageNum, Integer pageSize) {
+        return userService.getUserList(pageNum, pageSize);
+    }
+
+
 }

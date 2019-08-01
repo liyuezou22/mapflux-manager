@@ -1,6 +1,8 @@
 package com.cq.szyk.mapfluxuser.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cq.szyk.mapfluxcommon.expetion.ExceptionCast;
 import com.cq.szyk.mapfluxcommon.response.CommonCode;
 import com.cq.szyk.mapfluxcommon.response.Response;
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -47,13 +51,29 @@ public class UserService {
         return new ResponseResult(CommonCode.REGISTER_SUCCESS);
     }
 
+    /**
+     * 获取用户列表
+     */
+    public Response getUserList(Integer pageNum, Integer pageSize) {
+        //校验参数是否为空
+        UserModelInspect.getUserListInspect(pageNum, pageSize);
+        //查询列表
+        Page<Users> page = new Page<>(pageNum, pageSize);
+        IPage<Users> users = userMapper.selectPage(page, new QueryWrapper<>());
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", users.getTotal());
+        map.put("list", users.getRecords());
+        return new ResponseResult(CommonCode.SUCCESS, map);
+
+    }
+
     //根据用户名，在当前项目目录下，创建一个文件夹，用于存放用户数据
     private void createUserDir(String username) {
         String projectPath = System.getProperty("user.dir");
         String dirPaht = projectPath + "/mapflux_data/" + username;
         File file = new File(dirPaht);
         if (!file.exists()) {
-            boolean mkdir = file.mkdir();
+            boolean mkdir = file.mkdirs();
             if (!mkdir) {
                 LOG.error("registerUser ---> 创建用户文件夹失败！");
                 ExceptionCast.cast(CommonCode.MKDIR_FAILS);

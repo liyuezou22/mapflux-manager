@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value = "用户管理模块接口",description = "用户管理模块接口")
 public interface UserControllerApi {
-     @ApiOperation(value = "用户注册",notes = "用户注册")
-     Response registerUser(Users user);
+     @ApiOperation(value = "用户注册")
+     Response registerUser(Users users);
+     @ApiOperation(value = "用户信息编辑")
+     Response getUserList(Integer pageNum,Integer pageSize);
 }
