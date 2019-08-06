@@ -22,7 +22,12 @@ public enum CommonCode implements ResultCode {
     MKDIR_FAILS(false,2007,"用户文件夹生成失败！"),
     REGISTER_FAILS(false,2008,"用户注册失败！"),
     NICKNAME_NULL(false,2009,"昵称不能为空！"),
-    PARAMETER_NULL(false,2010,"参数不能为空！");
+    PARAMETER_NULL(false,2010,"参数不能为空！"),
+    FILE_NULL(false,2011,"上传文件不能为空"),
+    NAME_NULL(false,2012,"名称不能为空！"),
+    TYPE_NULL(false,2013,"类型不能为空！"),
+    TAG_NULL(false,2014,"标签不能为空！"),
+    FAILS(false,2015,"操作失败！");
     //操作是否成功
     boolean success;
     //操作代码

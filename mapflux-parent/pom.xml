@@ -20,6 +20,8 @@
         <module>../mapflux-eureka</module>
         <module>../mapflux-user</module>
         <module>../mapflux-api</module>
+        <module>../mapflux-basic-data</module>
+        <module>../mapflux-oauth</module>
     </modules>
 
     <properties>
@@ -28,10 +30,23 @@
         <fastjson.version>1.2.30</fastjson.version>
         <springfox-swagger.version>2.7.0</springfox-swagger.version>
         <druid.version>1.1.14</druid.version>
+        <commons-compress.version>1.9</commons-compress.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- go fast -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>4.4.3</version>
+            </dependency>
+            <!-- 文件解压 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons-compress.version}</version>
+            </dependency>
             <!-- MP -->
             <dependency>
                 <groupId>com.baomidou</groupId>

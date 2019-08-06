@@ -1,0 +1,37 @@
+server:
+  port: 9201
+spring:
+  application:
+    name: mapflux-basic-data
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:postgresql://localhost:5432/mapflux_manager
+    username: postgres
+    password: 111111
+    driver-class-name: org.postgresql.Driver
+  #文件上传配置
+  servlet:
+    multipart:
+      enabled: true
+      resolve-lazily: true
+      max-file-size: 10GB
+      max-request-size: 10GB
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+#mp 类型别名配置
+mybatis-plus:
+  mapper-locations: classpath:com/cq/szyk/mapfluxbasicdata/mapper/*.xml
+  type-aliases-package: com.cq.szyk.mapfluxmodel.basicdata
+#日志配置
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    com.cq.szyk.mapfluxmodel.mapper: debug
+#eureka client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://mapflux:mapflux@127.0.0.1:9100/eureka

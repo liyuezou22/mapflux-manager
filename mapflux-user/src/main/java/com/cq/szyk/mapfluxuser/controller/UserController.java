@@ -4,9 +4,7 @@ import com.cq.szyk.mapfluxapi.user.UserControllerApi;
 import com.cq.szyk.mapfluxcommon.response.Response;
 import com.cq.szyk.mapfluxmodel.users.Users;
 import com.cq.szyk.mapfluxuser.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -22,8 +20,9 @@ public class UserController implements UserControllerApi {
         return userService.registerUser(user);
     }
 
+    @GetMapping("/getUserList/{pageNum}/{pageSize}")
     @Override
-    public Response getUserList(Integer pageNum, Integer pageSize) {
+    public Response getUserList(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
         return userService.getUserList(pageNum, pageSize);
     }
 
