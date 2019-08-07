@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cq.szyk.mapfluxoauth.mapper.PermissionMapper">
+
+    <select id="findPerByUserId" resultType="com.cq.szyk.mapfluxmodel.users.Permission" parameterType="java.lang.Long">
+        SELECT
+            t5.*
+        FROM
+            users t1
+            LEFT JOIN user_role t2 ON t1.id = t2.user_id
+            LEFT JOIN role t3 ON t2.role_id = t3.id
+            LEFT JOIN role_permission t4 ON t3.id = t4.role_id
+            LEFT JOIN permission t5 ON t4.permission_id = t5.id
+        WHERE
+            t1.id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>
