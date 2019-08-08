@@ -29,6 +29,10 @@ public class ExceptionCatch {
     @ResponseBody
     public Response exception(Exception e) {
         LOGGER.error(e.getMessage());
+        if("不允许访问".equals(e.getMessage())){
+            CustomizeCode customizeCode = new CustomizeCode(false, 2000, "用户权限不足！");
+            return new ResponseResult(customizeCode);
+        }
         CustomizeCode customizeCode = new CustomizeCode(false, 2000, e.getMessage());
         return new ResponseResult(customizeCode);
     }

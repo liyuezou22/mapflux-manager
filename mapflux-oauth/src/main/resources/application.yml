@@ -15,3 +15,9 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:com/cq/szyk/mapfluxoauth/mapper/*.xml
   type-aliases-package: com.cq.szyk.mapfluxmodel.users
+
+#eureka client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://mapflux:mapflux@127.0.0.1:9100/eureka

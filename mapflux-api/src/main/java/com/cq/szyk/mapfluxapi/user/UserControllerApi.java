@@ -11,4 +11,6 @@ public interface UserControllerApi {
      Response registerUser(Users users);
      @ApiOperation(value = "用户信息编辑")
      Response getUserList(Integer pageNum,Integer pageSize);
+     @ApiOperation(value = "用户登陆",notes = "")
+     Response userLogin(String username,String password,String grant_type);
 }

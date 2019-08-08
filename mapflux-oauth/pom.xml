@@ -33,6 +33,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- eureka client -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
         <!-- sql 相关 -->
         <!-- 新出的数据库连接池 -->
         <dependency>

@@ -26,3 +26,22 @@ eureka:
   client:
     service-url:
       defaultZone: http://mapflux:mapflux@127.0.0.1:9100/eureka
+
+#eureka 负载均衡配置,使用最小并发服务器
+mapflux-oauth:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.BestAvailableRule
+
+#连接认证授权服务器
+#security:
+#  oauth2:
+#    client:
+#      client-id: client
+#      client-secret: client
+#      #获取token
+#      access-token-uri: http://localhost:9300/oauth/token
+#      #获取令牌
+#      user-authorization-uri: http://localhost:9300/oauth/authorize
+#    resource:
+#      #验证token是否正确
+#      token-info-uri: http://localhost:9300/oauth/check_token

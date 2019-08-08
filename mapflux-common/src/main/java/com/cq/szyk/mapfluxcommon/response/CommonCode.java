@@ -13,6 +13,7 @@ public enum CommonCode implements ResultCode {
     //1000开始的均为true，2000开始的均为false
     SUCCESS(true, 10000, "操作成功！"),
     REGISTER_SUCCESS(true,10001,"用户注册成功！"),
+    LOGIN_SUCCESS(true,1002,"登陆成功！"),
     DATA_NULL(false, 2001, "数据不能为空！"),
     USERNAME_NULL(false,2002,"用户名不能为空！"),
     PASSWORD_NULL(false,2003,"密码不能为空！"),
@@ -27,7 +28,9 @@ public enum CommonCode implements ResultCode {
     NAME_NULL(false,2012,"名称不能为空！"),
     TYPE_NULL(false,2013,"类型不能为空！"),
     TAG_NULL(false,2014,"标签不能为空！"),
-    FAILS(false,2015,"操作失败！");
+    FAILS(false,2015,"操作失败！"),
+    GRANT_NULL(false,2016,"登陆类型不能为空！"),
+    LOGIN_FAILS(false,2017,"登陆失败，用户名/密码错误！");
     //操作是否成功
     boolean success;
     //操作代码

@@ -46,4 +46,16 @@ public class UserModelInspect {
             ExceptionCast.cast(CommonCode.PARAMETER_NULL);
         }
     }
+
+    public static void userLoginInspect(String userName,String  password,String grant_type){
+        if (userName == null || "".equals(userName)) {
+            ExceptionCast.cast(CommonCode.USERNAME_NULL);
+        }
+        if (password == null || "".equals(password)) {
+            ExceptionCast.cast(CommonCode.PASSWORD_NULL);
+        }
+        if (grant_type == null || "".equals(grant_type)) {
+            ExceptionCast.cast(CommonCode.GRANT_NULL);
+        }
+    }
 }
