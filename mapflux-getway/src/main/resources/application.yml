@@ -1,0 +1,25 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: mapflux-getway
+
+#eureka client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://mapflux:mapflux@127.0.0.1:9100/eureka
+
+#配置网关路由规则
+zuul:
+  routes:
+    mapflux-user:
+      path: /user/**
+      serviceId: mapflux-user
+      strip-prefix: false
+  sensitive-headers:
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

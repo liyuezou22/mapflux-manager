@@ -22,6 +22,7 @@
         <module>../mapflux-api</module>
         <module>../mapflux-basic-data</module>
         <module>../mapflux-oauth</module>
+        <module>../mapflux-getway</module>
     </modules>
 
     <properties>
