@@ -5,7 +5,7 @@ spring:
   application:
     name: mapflux-oauth
   datasource:
-    jdbc-url: jdbc:postgresql://localhost:5432/mapflux_manager?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:postgresql://localhost:5432/mapflux_manager?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: postgres
     password: 111111
     driver-class-name: org.postgresql.Driver
@@ -15,7 +15,13 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:com/cq/szyk/mapfluxoauth/mapper/*.xml
   type-aliases-package: com.cq.szyk.mapfluxmodel.users
-
+#设置JWT密钥
+encrypt:
+  key-store:
+    location: classpath:/mapflux.keystore
+    secret: mapflux
+    alias: mapflux
+    password: mapflux
 #eureka client
 eureka:
   client:
