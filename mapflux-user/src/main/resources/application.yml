@@ -10,6 +10,18 @@ spring:
     username: postgres
     password: 111111
     driver-class-name: org.postgresql.Driver
+  #redis
+  redis:
+    database: 0
+    host: 192.168.139.133
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 100000
 
 #mp 类型别名配置
 mybatis-plus:
@@ -32,7 +44,8 @@ mapflux-oauth:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.BestAvailableRule
 
-#连接认证授权服务器
+
+#访问认证服务器常量配置
 #security:
 #  oauth2:
 #    client:

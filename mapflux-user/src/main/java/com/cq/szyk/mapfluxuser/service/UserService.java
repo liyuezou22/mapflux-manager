@@ -14,9 +14,8 @@ import com.cq.szyk.mapfluxuser.mapper.UserMapper;
 import org.apache.tomcat.util.descriptor.web.LoginConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -27,11 +26,17 @@ import org.springframework.util.Base64Utils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserService {
@@ -42,6 +47,8 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
     @Resource
     private LoadBalancerClient loadBalancerClient;
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
 
     /**
      * 用户注册
@@ -80,6 +87,7 @@ public class UserService {
 
 
     public Response userLogin(String userName, String password, String grant_type) {
+        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
         String oauthUrl = loadBalancerClient.choose("MAPFLUX-OAUTH").getUri() + "/oauth/token";
         //参数非空校验
         UserModelInspect.userLoginInspect(userName, password, grant_type);
@@ -112,9 +120,19 @@ public class UserService {
         }
         Map map = exchange.getBody();
         JSONObject result = new JSONObject(map);
-        //校验成功后，将token存入redis，username做key
-
-        return new ResponseResult(CommonCode.LOGIN_SUCCESS,result);
+        //校验成功后，将token存入redis，jti身份令牌做key
+        String access_token = result.get("access_token").toString();
+        String jti = result.get("jti").toString();
+        //设置token 有效期为一天
+        redisTemplate.opsForValue().set(jti, access_token, 1, TimeUnit.DAYS);
+        Object o = redisTemplate.opsForValue().get(jti);
+        if (o == null) {
+            ExceptionCast.cast(CommonCode.JTI_SAVE_FAILS);
+        }
+        //将身份令牌存入cookie
+        Cookie cookie = new Cookie("jti", jti);
+        response.addCookie(cookie);
+        return new ResponseResult(CommonCode.LOGIN_SUCCESS, result);
     }
 
     //获取http basic的串

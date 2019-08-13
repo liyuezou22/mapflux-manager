@@ -30,7 +30,10 @@ public enum CommonCode implements ResultCode {
     TAG_NULL(false,2014,"标签不能为空！"),
     FAILS(false,2015,"操作失败！"),
     GRANT_NULL(false,2016,"登陆类型不能为空！"),
-    LOGIN_FAILS(false,2017,"登陆失败，用户名/密码错误！");
+    LOGIN_FAILS(false,2017,"登陆失败，用户名/密码错误！"),
+    JTI_SAVE_FAILS(false,2018,"身份令牌存储失败！"),
+    NOT_LOGIN(false,2019,"请先进行登陆！"),
+    NOT_TOKEN(false,2020,"token已经过期，请重新登陆！");
     //操作是否成功
     boolean success;
     //操作代码
@@ -58,7 +61,6 @@ public enum CommonCode implements ResultCode {
     public String message() {
         return message;
     }
-
 
 
 }

@@ -31,6 +31,12 @@
             <groupId>com.cq.szyk</groupId>
             <artifactId>mapflux-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.baomidou</groupId>
+                    <artifactId>mybatis-plus-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- 文件上传 -->
         <dependency>

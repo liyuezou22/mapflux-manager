@@ -21,6 +21,7 @@ public class BasicDataService {
         DataModelInspect.fileUploadInspect(multipartFile, data);
         //文件转换
         File file = FileUtils.changeToFile(multipartFile, data.getType());
+        //获取文件名称
         String name = file.getName();
         //根据不同的类型进行封装不同的操作
         if ("geojson".equals(data.getType().toLowerCase())) {
@@ -35,7 +36,10 @@ public class BasicDataService {
         return new ResponseResult(CommonCode.FAILS, null);
     }
 
+    //geojson文件上传
+    private void uploadGeojsonFile(MultipartFile file){
 
+    }
 
 
 

@@ -1,7 +1,5 @@
 package com.cq.szyk.mapfluxoauth.config;
 
-import com.cq.szyk.mapfluxcommon.expetion.ExceptionCast;
-import com.cq.szyk.mapfluxcommon.response.CommonCode;
 import com.cq.szyk.mapfluxmodel.users.Permission;
 import com.cq.szyk.mapfluxmodel.users.Users;
 import com.cq.szyk.mapfluxoauth.service.PermissionService;
