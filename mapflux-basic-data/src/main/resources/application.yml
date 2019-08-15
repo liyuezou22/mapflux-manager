@@ -9,7 +9,7 @@ spring:
     username: postgres
     password: 111111
     driver-class-name: org.postgresql.Driver
-  #文件上传配置
+  # 鏂囦欢涓婁紶閰嶇疆
   servlet:
     multipart:
       enabled: true
@@ -21,17 +21,21 @@ spring:
       force: true
       charset: UTF-8
       enabled: true
-#mp 类型别名配置
+# mp 绫诲瀷鍒悕閰嶇疆
 mybatis-plus:
   mapper-locations: classpath:com/cq/szyk/mapfluxbasicdata/mapper/*.xml
   type-aliases-package: com.cq.szyk.mapfluxmodel.basicdata
-#日志配置
+# 鏃ュ織閰嶇疆
 logging:
   config: classpath:logback-spring.xml
   level:
     com.cq.szyk.mapfluxmodel.mapper: debug
-#eureka client
+# eureka client
 eureka:
   client:
     service-url:
       defaultZone: http://mapflux:mapflux@127.0.0.1:9100/eureka
+
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 5000

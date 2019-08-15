@@ -36,4 +36,5 @@ public class ExceptionCatch {
         CustomizeCode customizeCode = new CustomizeCode(false, 2000, e.getMessage());
         return new ResponseResult(customizeCode);
     }
+
 }

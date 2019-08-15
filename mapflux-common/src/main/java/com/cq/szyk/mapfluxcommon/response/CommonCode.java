@@ -33,7 +33,10 @@ public enum CommonCode implements ResultCode {
     LOGIN_FAILS(false,2017,"登陆失败，用户名/密码错误！"),
     JTI_SAVE_FAILS(false,2018,"身份令牌存储失败！"),
     NOT_LOGIN(false,2019,"请先进行登陆！"),
-    NOT_TOKEN(false,2020,"token已经过期，请重新登陆！");
+    NOT_TOKEN(false,2020,"token已经过期，请重新登陆！"),
+    TOKEN_ERROR(false,2021,"错误的token！"),
+    NOT_PREAUTHORIZE(false,2022,"权限不足！"),
+    FILE_UPLOAD_FAILS(false,2023,"文件上传失败！");
     //操作是否成功
     boolean success;
     //操作代码

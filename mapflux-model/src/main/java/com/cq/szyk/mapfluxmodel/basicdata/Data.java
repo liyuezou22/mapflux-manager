@@ -68,7 +68,7 @@ public class Data implements Serializable {
     /**
      * 数据类型（geojson,shp,gdb,pg）
      */
-    private String type;
+        private String type;
 
     /**
      * 缩略图

@@ -1,4 +1,4 @@
-package com.cq.szyk.mapfluxuser.config;
+package com.cq.szyk.mapfluxbasicdata.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +14,8 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-import static com.cq.szyk.mapfluxcommon.utils.FileUtils.getPublicKey;
 
+import static com.cq.szyk.mapfluxcommon.utils.FileUtils.getPublicKey;
 
 @Configuration
 @EnableResourceServer
@@ -32,7 +32,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         return new JwtTokenStore(jwtAccessTokenConverter);
     }
 
-    //定义JwtAccessTokenConverter，使用jwt令牌
+    //定义JJwtAccessTokenConverter，使用jwt令牌
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
@@ -58,7 +58,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 //下边的路径放行
                 .antMatchers("/v2/api-docs", "/swagger-resources/configuration/ui",
                         "/swagger-resources", "/swagger-resources/configuration/security",
-                        "/swagger-ui.html", "/webjars/**","/user/userLogin").permitAll()
+                        "/swagger-ui.html", "/webjars/**", "/course/coursepic/list/**", "/course/courseview/**").permitAll()
                 .anyRequest().authenticated();
     }
 

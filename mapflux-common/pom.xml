@@ -15,6 +15,10 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <!-- 需要提供异常捕获配置 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

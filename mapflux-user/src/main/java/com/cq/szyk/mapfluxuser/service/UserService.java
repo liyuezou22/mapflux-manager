@@ -20,6 +20,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Base64Utils;
@@ -31,7 +33,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
@@ -133,6 +134,18 @@ public class UserService {
         Cookie cookie = new Cookie("jti", jti);
         response.addCookie(cookie);
         return new ResponseResult(CommonCode.LOGIN_SUCCESS, result);
+    }
+
+    public Users getUserInfo() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+        if (name == null) {
+            ExceptionCast.cast(CommonCode.NOT_LOGIN);
+        }
+        QueryWrapper<Users> wrapper = new QueryWrapper<>();
+        wrapper.eq("username", name);
+        Users users = userMapper.selectOne(wrapper);
+        return users;
     }
 
     //获取http basic的串

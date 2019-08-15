@@ -2,11 +2,16 @@ package com.cq.szyk.mapfluxcommon.utils;
 
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class FileUtils {
     //nginx中，gofast集群负载均衡路径
@@ -54,5 +59,17 @@ public class FileUtils {
         return JSONObject.parseObject(post);
     }
 
+    /**
+     * 提取公钥
+     * */
+    public static String getPublicKey(Resource resource){
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(resource.getInputStream());
+            BufferedReader br = new BufferedReader(inputStreamReader);
+            return br.lines().collect(Collectors.joining("\n"));
+        } catch (IOException ioe) {
+            return null;
+        }
+    }
 
 }
