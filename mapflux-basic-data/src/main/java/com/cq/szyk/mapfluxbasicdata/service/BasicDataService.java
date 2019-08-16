@@ -56,6 +56,7 @@ public class BasicDataService {
             saveFileInfo = uploadGeojsonFile(file);
         } else if ("pg".equals(data.getType().toLowerCase())) {
             //存储pg数据文件
+            System.out.println("暂缓");
         } else {
             //shp,gdb 文件上传需要解压
 
@@ -102,6 +103,11 @@ public class BasicDataService {
             LOG.error(e.getMessage());
             ExceptionCast.cast(CommonCode.FILE_UPLOAD_FAILS);
         }
+        return null;
+    }
+
+    //zip文件上传，需要注意的是，shp和gdb文件都会有一个根文件夹，为了避免文件名重复且覆盖，需要先解压了重命名根文件夹在上传
+    private String uploadZipFile(File file){
         return null;
     }
 
