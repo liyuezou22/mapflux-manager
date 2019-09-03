@@ -92,7 +92,7 @@ public class UserService {
         String oauthUrl = loadBalancerClient.choose("MAPFLUX-OAUTH").getUri() + "/oauth/token";
         //参数非空校验
         UserModelInspect.userLoginInspect(userName, password, grant_type);
-        //设置Authorization,就是client验证(如何传递client信息？需要将client的账号密码转换为base64，在前面拼接上"Basic "即可)
+        //设置Authorization,就是client验证(如何传递client信息？ 需要将client的账号密码转换为base64，在前面拼接上"Basic"即可)
         LinkedMultiValueMap<String, String> header = new LinkedMultiValueMap<>();
         String httpBasic = getHttpBasic("client", "client");
         header.add("Authorization", httpBasic);
